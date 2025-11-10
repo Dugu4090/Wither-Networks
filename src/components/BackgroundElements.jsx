@@ -22,14 +22,12 @@ const BackgroundElements = () => {
       particle.style.animationDelay = `${delay}s`;
       
       const colors = [
-        'rgba(106, 90, 249, 0.3)',
-        'rgba(214, 110, 253, 0.3)',
-        'rgba(80, 50, 150, 0.3)',
-        'rgba(50, 80, 150, 0.3)'
+        'rgba(34, 197, 94, 0.3)',
+        'rgba(34, 197, 94, 0.2)',
+        'rgba(34, 197, 94, 0.15)'
       ];
       const randomColor = colors[Math.floor(Math.random() * colors.length)];
       particle.style.background = randomColor;
-      particle.style.boxShadow = `0 0 20px ${randomColor.replace('0.3', '0.5')}`;
       
       backgroundContainer.appendChild(particle);
       

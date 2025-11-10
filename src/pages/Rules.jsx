@@ -1,51 +1,49 @@
 const Rules = () => {
   return (
     <div className="container">
-      <section className="hero">
-        <div className="hero-content">
-          <h2>Server Rules</h2>
-          <p>Please read and follow these rules to ensure a fun and fair experience for everyone</p>
-        </div>
-      </section>
+      <div className="page-header">
+        <h1>Server Rules</h1>
+        <p>Compliance with these rules is mandatory for all players</p>
+      </div>
 
       <section className="features">
-        <h2>General Rules</h2>
+        <h2>Core Regulations</h2>
         <div className="features-grid">
           <div className="feature-card" style={{ textAlign: 'left' }}>
-            <div className="feature-icon"><i className="fas fa-comments"></i></div>
-            <h3>1. Respect All Players</h3>
-            <p>Treat everyone with respect. Harassment, bullying, racism, sexism, or discrimination of any kind will not be tolerated. Keep chat friendly and appropriate for all ages.</p>
-            <p style={{ color: '#FF6B6B', marginTop: '10px' }}><strong>Punishment:</strong> Mute → Temporary Ban → Permanent Ban</p>
+            <div className="feature-icon"><i className="fas fa-user-shield"></i></div>
+            <h3>1. Professional Conduct</h3>
+            <p>Maintain respectful communication. Harassment, discrimination, or toxic behavior will result in immediate action.</p>
+            <p style={{ color: 'var(--green)', marginTop: '12px', fontSize: '14px' }}><strong>Enforcement:</strong> Mute → Temporary Ban → Permanent Ban</p>
           </div>
           <div className="feature-card" style={{ textAlign: 'left' }}>
             <div className="feature-icon"><i className="fas fa-ban"></i></div>
-            <h3>2. No Cheating/Hacking</h3>
-            <p>Use of hacked clients, cheat mods, or any unfair advantage is strictly prohibited. This includes x-ray, fly hacks, kill aura, auto-clickers, and similar tools.</p>
-            <p style={{ color: '#FF6B6B', marginTop: '10px' }}><strong>Punishment:</strong> Permanent Ban (No Appeals)</p>
+            <h3>2. Zero-Tolerance Policy</h3>
+            <p>Any form of cheating, hacking, or unfair advantage tools is strictly prohibited. This includes but is not limited to client modifications, macros, and exploits.</p>
+            <p style={{ color: 'var(--green)', marginTop: '12px', fontSize: '14px' }}><strong>Enforcement:</strong> Permanent Ban (No Appeals)</p>
           </div>
           <div className="feature-card" style={{ textAlign: 'left' }}>
-            <div className="feature-icon"><i className="fas fa-exclamation-triangle"></i></div>
-            <h3>3. No Spam/Advertising</h3>
-            <p>Spamming chat, advertising other servers, or posting links without permission is not allowed. This includes excessive use of caps, symbols, or repeated messages.</p>
-            <p style={{ color: '#FF6B6B', marginTop: '10px' }}><strong>Punishment:</strong> Mute → Temporary Ban</p>
+            <div className="feature-icon"><i className="fas fa-shield-alt"></i></div>
+            <h3>3. No Exploitation</h3>
+            <p>Exploiting bugs, glitches, or unintended mechanics is forbidden. Report vulnerabilities to administration immediately.</p>
+            <p style={{ color: 'var(--green)', marginTop: '12px', fontSize: '14px' }}><strong>Enforcement:</strong> Temporary Ban → Permanent Ban</p>
           </div>
           <div className="feature-card" style={{ textAlign: 'left' }}>
-            <div className="feature-icon"><i className="fas fa-bug"></i></div>
-            <h3>4. No Exploiting</h3>
-            <p>Exploiting bugs, glitches, or server mechanics for personal gain is forbidden. Report any bugs you find to staff instead of using them.</p>
-            <p style={{ color: '#FF6B6B', marginTop: '10px' }}><strong>Punishment:</strong> Temporary Ban → Permanent Ban</p>
+            <div className="feature-icon"><i className="fas fa-comments"></i></div>
+            <h3>4. Communication Standards</h3>
+            <p>No spam, advertising, or excessive messaging. All communications must remain professional and on-topic.</p>
+            <p style={{ color: 'var(--green)', marginTop: '12px', fontSize: '14px' }}><strong>Enforcement:</strong> Mute → Temporary Ban</p>
           </div>
           <div className="feature-card" style={{ textAlign: 'left' }}>
-            <div className="feature-icon"><i className="fas fa-hands-helping"></i></div>
-            <h3>5. No Scamming</h3>
-            <p>Scamming other players in trades, sales, or agreements is not allowed. Always honor your deals and trades.</p>
-            <p style={{ color: '#FF6B6B', marginTop: '10px' }}><strong>Punishment:</strong> Warning → Temporary Ban → Permanent Ban</p>
+            <div className="feature-icon"><i className="fas fa-handshake"></i></div>
+            <h3>5. Fair Trading</h3>
+            <p>Scamming or fraudulent trading is prohibited. All transactions must be conducted in good faith.</p>
+            <p style={{ color: 'var(--green)', marginTop: '12px', fontSize: '14px' }}><strong>Enforcement:</strong> Warning → Temporary Ban → Permanent Ban</p>
           </div>
           <div className="feature-card" style={{ textAlign: 'left' }}>
-            <div className="feature-icon"><i className="fas fa-user-shield"></i></div>
-            <h3>6. Respect Staff</h3>
-            <p>Follow staff instructions at all times. Staff members are here to help and enforce rules. Arguing with or disrespecting staff will result in punishment.</p>
-            <p style={{ color: '#FF6B6B', marginTop: '10px' }}><strong>Punishment:</strong> Mute → Temporary Ban</p>
+            <div className="feature-icon"><i className="fas fa-gavel"></i></div>
+            <h3>6. Staff Authority</h3>
+            <p>Comply with all staff directives. Staff decisions are final and must be respected at all times.</p>
+            <p style={{ color: 'var(--green)', marginTop: '12px', fontSize: '14px' }}><strong>Enforcement:</strong> Mute → Temporary Ban</p>
           </div>
         </div>
       </section>
@@ -54,27 +52,27 @@ const Rules = () => {
         <h2>Additional Guidelines</h2>
         <div className="features-grid">
           <div className="feature-card" style={{ textAlign: 'left' }}>
-            <div className="feature-icon"><i className="fas fa-home"></i></div>
-            <h3>Building & Griefing</h3>
-            <p>• Build respectfully and away from other players unless given permission<br/>
-            • No griefing other players' builds or bases<br/>
-            • Keep builds appropriate and family-friendly<br/>
-            • No lag machines or structures that harm server performance</p>
+            <div className="feature-icon"><i className="fas fa-building"></i></div>
+            <h3>Building Regulations</h3>
+            <p>• Maintain appropriate distance from other builds<br/>
+            • No griefing or unauthorized modifications<br/>
+            • All structures must be appropriate<br/>
+            • No performance-impacting constructions</p>
           </div>
           <div className="feature-card" style={{ textAlign: 'left' }}>
-            <div className="feature-icon"><i className="fas fa-gamepad"></i></div>
-            <h3>PvP Rules</h3>
-            <p>• Respect PvP zones and safe areas<br/>
-            • No combat logging (logging out during combat)<br/>
-            • No teaming in solo game modes<br/>
-            • Report suspicious combat activity to staff</p>
+            <div className="feature-icon"><i className="fas fa-swords"></i></div>
+            <h3>Combat Guidelines</h3>
+            <p>• Respect designated PvP zones<br/>
+            • No combat logging during engagement<br/>
+            • Follow game mode specific rules<br/>
+            • Report suspicious activity immediately</p>
           </div>
           <div className="feature-card" style={{ textAlign: 'left' }}>
-            <div className="feature-icon"><i className="fas fa-user-alt"></i></div>
-            <h3>Account Security</h3>
-            <p>• Keep your account secure with a strong password<br/>
-            • Never share your account with others<br/>
-            • You are responsible for all actions on your account<br/>
+            <div className="feature-icon"><i className="fas fa-lock"></i></div>
+            <h3>Account Responsibility</h3>
+            <p>• Secure your account with strong credentials<br/>
+            • Account sharing is prohibited<br/>
+            • All actions on your account are your responsibility<br/>
             • Report compromised accounts immediately</p>
           </div>
         </div>

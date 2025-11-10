@@ -22,18 +22,23 @@ const ServerInfo = () => {
   };
 
   return (
-    <div className="server-info">
-      <div className="server-ip" onClick={copyIP} style={{ cursor: 'pointer' }}>
-        <div className="ip-label">SERVER IP</div>
-        <div className="ip-address">play.withernetworks.fun</div>
-        <button className={`copy-btn ${copied ? 'copied' : ''}`} onClick={copyIP}>
-          <i className="fas fa-copy"></i>
-          <span>{copied ? 'Copied!' : 'Copy'}</span>
-        </button>
-      </div>
-      <div className="player-count">
-        <i className="fas fa-users"></i>
-        <span>248 Online</span>
+    <div className="server-info-bar">
+      <div className="server-info-content">
+        <div className="server-ip" onClick={copyIP} style={{ cursor: 'pointer' }}>
+          <i className="fas fa-server"></i>
+          <span className="ip-text">play.withernetworks.fun</span>
+          {copied && <span style={{ color: 'var(--green)', fontSize: '12px', marginLeft: '8px' }}>✓ Copied!</span>}
+        </div>
+        <div className="server-status">
+          <div className="status-item">
+            <div className="status-dot"></div>
+            <span>Online</span>
+          </div>
+          <div className="status-item">
+            <i className="fas fa-users"></i>
+            <span>248 Players</span>
+          </div>
+        </div>
       </div>
     </div>
   );

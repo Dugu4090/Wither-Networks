@@ -21,8 +21,8 @@ const Navbar = () => {
       <header>
         <div className="header-content">
           <Link to="/" className="logo">
-            <img src="https://i.ibb.co/RkpxzFvT/wither-logo-DLNW1xn-N.png" alt="WitherNetworks Logo" className="logo-img" />
-            <h1>WitherNetworks</h1>
+            <img src="https://i.ibb.co/RkpxzFvT/wither-logo-DLNW1xn-N.png" alt="Wither Networks Logo" className="logo-img" />
+            <h1>Wither Networks</h1>
           </Link>
           
           <nav className="desktop-nav">

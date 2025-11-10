@@ -8,32 +8,27 @@ const Footer = () => {
           <h3>Wither Networks</h3>
           <p>Premium Minecraft server providing the best gameplay experience since 2025.</p>
           <div className="social-links">
-            <a href="#"><i className="fab fa-discord"></i></a>
-            <a href="#"><i className="fab fa-twitter"></i></a>
-            <a href="#"><i className="fab fa-youtube"></i></a>
+            <a href="#" className="social-link"><i className="fab fa-discord"></i></a>
+            <a href="#" className="social-link"><i className="fab fa-twitter"></i></a>
+            <a href="#" className="social-link"><i className="fab fa-youtube"></i></a>
           </div>
         </div>
         <div className="footer-section">
           <h3>Quick Links</h3>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/game-modes">Game Modes</Link></li>
-            <li><Link to="/rules">Rules</Link></li>
-          </ul>
+          <Link to="/">Home</Link>
+          <Link to="/about">About Us</Link>
+          <Link to="/game-modes">Game Modes</Link>
+          <Link to="/rules">Rules</Link>
         </div>
         <div className="footer-section">
           <h3>Support</h3>
-          <ul>
-            <li><Link to="/contact">Help Center</Link></li>
-            <li><Link to="/contact">Contact Us</Link></li>
-            <li><Link to="/contact">Report a Bug</Link></li>
-          </ul>
+          <Link to="/contact">Help Center</Link>
+          <Link to="/contact">Contact Us</Link>
+          <Link to="/ranks">Premium Ranks</Link>
         </div>
       </div>
       <div className="footer-bottom">
-        <p>© 2025 WitherNetworks | play.withernetworks.fun</p>
-        <p className="made-with-love">Made with ❤️ for the community</p>
+        <p>© 2025 Wither Networks | play.withernetworks.fun</p>
       </div>
     </footer>
   );

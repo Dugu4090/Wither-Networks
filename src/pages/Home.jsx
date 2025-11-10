@@ -27,81 +27,81 @@ const Home = () => {
     <div className="container">
       <section className="hero">
         <div className="hero-content">
-          <h2>Premium Minecraft Experience</h2>
-          <p>Join the most advanced Minecraft network with unique gameplay, custom plugins, and an active community.</p>
+          <h2>Elite Minecraft Server Network</h2>
+          <p>Experience premium gameplay with cutting-edge features, advanced anti-cheat protection, and a thriving community of dedicated players.</p>
           <div className="cta-buttons">
             <Link to="/game-modes" className="btn primary">Explore Game Modes</Link>
-            <Link to="/contact" className="btn secondary">Contact Us</Link>
+            <Link to="/contact" className="btn secondary">Join Community</Link>
           </div>
         </div>
       </section>
 
       <section className="features">
-        <h2>Why Choose Wither Networks?</h2>
+        <h2>Why Choose Wither Networks</h2>
         <div className="features-grid">
           <div className="feature-card">
             <div className="feature-icon">
-              <i className="fas fa-bolt"></i>
+              <i className="fas fa-tachometer-alt"></i>
             </div>
-            <h3>High Performance</h3>
-            <p>Optimized servers with 99.9% uptime and minimal lag for the best gameplay experience.</p>
+            <h3>Ultra Performance</h3>
+            <p>State-of-the-art servers delivering 99.9% uptime with zero lag for seamless gameplay.</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">
               <i className="fas fa-shield-alt"></i>
             </div>
-            <h3>Secure Environment</h3>
-            <p>Advanced anti-cheat systems and 24/7 moderation to ensure fair play for all players.</p>
+            <h3>Enterprise Security</h3>
+            <p>Military-grade anti-cheat systems and 24/7 monitoring ensure a fair competitive environment.</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">
-              <i className="fas fa-gamepad"></i>
+              <i className="fas fa-rocket"></i>
             </div>
-            <h3>Custom Game Modes</h3>
-            <p>Unique gameplay experiences with custom plugins and regularly updated content.</p>
+            <h3>Custom Systems</h3>
+            <p>Proprietary game mechanics and exclusive features built from the ground up.</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">
               <i className="fas fa-users"></i>
             </div>
-            <h3>Active Community</h3>
-            <p>Join thousands of players in our friendly and welcoming Minecraft community.</p>
+            <h3>Professional Community</h3>
+            <p>Join thousands of skilled players in a mature, competitive gaming environment.</p>
           </div>
         </div>
       </section>
 
       <section className="game-modes">
-        <h2>Our Game Modes</h2>
+        <h2>Game Modes</h2>
         <div className="modes-container">
           <div className="mode-card">
             <div className="mode-header">
               <div className="mode-icon">
-                <i className="fas fa-mountain"></i>
+                <i className="fas fa-globe"></i>
               </div>
               <h3>Survival</h3>
             </div>
-            <div className="mode-status released">LIVE NOW</div>
-            <p>Classic Minecraft survival with enhanced features, custom plugins, and community events.</p>
+            <div className="mode-status released">LIVE</div>
+            <p>Enhanced vanilla survival with advanced economy systems, land claiming, and regular community events.</p>
             <ul className="mode-features">
-              <li>Custom terrain generation</li>
-              <li>Unique economy system</li>
-              <li>Regular events and competitions</li>
+              <li>Custom world generation</li>
+              <li>Advanced economy & trading</li>
+              <li>Weekly tournaments</li>
             </ul>
           </div>
           
           <div className="mode-card">
             <div className="mode-header">
               <div className="mode-icon">
-                <i className="fas fa-heart"></i>
+                <i className="fas fa-heart-broken"></i>
               </div>
               <h3>Lifesteal</h3>
             </div>
-            <div className="mode-status coming-soon">COMING SOON</div>
-            <p>Intense PvP survival where you steal health from opponents in combat.</p>
+            <div className="mode-status coming-soon">COMING Q2 2025</div>
+            <p>Competitive PvP survival where combat prowess determines your health pool and dominance.</p>
             <ul className="mode-features">
-              <li>Unique combat mechanics</li>
-              <li>Progression system</li>
-              <li>Leaderboard rankings</li>
+              <li>Skill-based combat mechanics</li>
+              <li>Ranked progression system</li>
+              <li>Global leaderboards</li>
             </ul>
           </div>
         </div>
@@ -130,20 +130,20 @@ const Home = () => {
       </section>
 
       <section className="ranks-preview">
-        <h2>Premium Ranks</h2>
-        <p className="section-description">Support the server and unlock exclusive perks with our premium ranks!</p>
+        <h2>Premium Membership</h2>
+        <p className="section-description">Unlock exclusive features and support server development with premium ranks</p>
         <div className="ranks-grid">
           <div className="rank-preview-card">
-            <div className="rank-icon"><i className="fas fa-star"></i></div>
+            <div className="rank-icon"><i className="fas fa-gem"></i></div>
             <h3>VIP</h3>
             <div className="rank-price">$1.99</div>
-            <p>Access to /fly, VIP prefix, and 2 player vaults</p>
+            <p>Essential perks including /fly command, VIP prefix, and 2 player vaults</p>
           </div>
           <div className="rank-preview-card">
-            <div className="rank-icon"><i className="fas fa-skull"></i></div>
+            <div className="rank-icon"><i className="fas fa-crown"></i></div>
             <h3>WITHER</h3>
             <div className="rank-price">$12.99</div>
-            <p>All LEGEND perks, 16 vaults, exclusive cosmetics</p>
+            <p>Ultimate access with all LEGEND perks, 16 vaults, and exclusive cosmetics</p>
           </div>
         </div>
         <div className="cta-center">
@@ -152,15 +152,15 @@ const Home = () => {
       </section>
 
       <section className="testimonials">
-        <h2>What Players Say</h2>
+        <h2>Player Testimonials</h2>
         <div className="testimonials-container">
           {[
-            { name: 'MinecraftPro99', role: 'Early Supporter', text: 'Wither Networks has completely changed my Minecraft experience. The custom plugins and active community make it the best server I\'ve ever played on. The survival mode is incredibly engaging with unique features!' },
-            { name: 'BuilderExpert', role: 'Community Moderator', text: 'The staff team is incredibly helpful and the anti-cheat system keeps the game fair for everyone. I\'ve been playing here for over 2 years and it just keeps getting better. Best Minecraft server hands down!' },
-            { name: 'PixelMaster', role: 'Event Winner 2025', text: 'The Survival mode with custom terrain generation is unlike anything else. The regular events and competitions keep the community engaged and active. Can\'t wait for the new game modes to launch!' },
-            { name: 'SkyWalker2024', role: 'MYTHIC Rank', text: 'Amazing server with zero lag! The economy system is well-balanced and the community is super friendly. I\'ve made so many friends here. The ranks are worth every penny for the perks you get!' },
-            { name: 'CraftMaster88', role: 'LEGEND Rank', text: 'I\'ve tried many servers but WitherNetworks stands out. The custom features, active moderation, and constant updates make it feel fresh every time I log in. Highly recommend to everyone!' },
-            { name: 'DiamondHunter', role: 'Tournament Champion', text: 'The community events are incredible and the rewards are generous. Staff actually listens to player feedback and implements suggestions. This is how a Minecraft server should be run!' }
+            { name: 'ElitePvP', role: 'Tournament Champion', text: 'The most professional Minecraft server I\'ve encountered. Zero lag, exceptional anti-cheat, and a truly competitive environment. The custom features are leagues ahead of other networks.' },
+            { name: 'BuildMaster', role: 'Community Leader', text: 'Outstanding server architecture and management. The staff team is highly professional and responsive. Been playing for 2+ years and the quality only improves with each update.' },
+            { name: 'TechGamer', role: 'WITHER Rank', text: 'Unparalleled performance and stability. The custom terrain generation is innovative, and the economy system is perfectly balanced. Worth every minute spent here.' },
+            { name: 'StrategyKing', role: 'Survival Lead', text: 'The level of polish and attention to detail is remarkable. Regular updates keep the gameplay fresh, and the community is mature and skilled. Highly recommended.' },
+            { name: 'ProBuilder', role: 'LEGEND Rank', text: 'Best investment I\'ve made in Minecraft. The premium ranks provide excellent value, and the exclusive features are actually useful. Server uptime is consistently perfect.' },
+            { name: 'CombatPro', role: 'Leaderboard #3', text: 'Fair competitive environment with professional moderation. The anti-cheat works flawlessly without affecting legitimate players. This is how servers should be run.' }
           ].map((testimonial, index) => (
             <div className="testimonial-card" key={index}>
               <div className="testimonial-content">
