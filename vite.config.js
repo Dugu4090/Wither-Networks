@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: true,
-    allowedHosts: ['test.dshost.dpdns.org']
+    allowedHosts: ['test.dshost.dpdns.org', 'localhost', '127.0.0.1']
   }
 })
