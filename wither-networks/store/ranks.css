@@ -1,0 +1,104 @@
+.ranks-section {
+    padding: 0;
+}
+
+.ranks-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 0 0 80px;
+}
+
+.rank-card {
+    background: rgba(20, 20, 40, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px 25px;
+    transition: all 0.4s ease;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.rank-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #6a5af9, #d66efd);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.rank-card:hover::before {
+    transform: scaleX(1);
+}
+
+.rank-card:hover {
+    transform: translateY(-10px);
+    border: 2px solid rgba(106, 90, 249, 0.4);
+    box-shadow: 0 15px 40px rgba(106, 90, 249, 0.3);
+}
+
+.rank-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #6a5af9, #d66efd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.rank-prices {
+    margin-bottom: 25px;
+}
+
+.price-usd {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.price-inr {
+    font-size: 1.1rem;
+    color: #b0b0d0;
+}
+
+.buy-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #6a5af9, #d66efd);
+    color: white;
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(106, 90, 249, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.buy-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(106, 90, 249, 0.6);
+}
+
+.rank-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.rank-card:nth-child(1) .rank-icon { color: #4CAF50; }
+.rank-card:nth-child(2) .rank-icon { color: #2196F3; }
+.rank-card:nth-child(3) .rank-icon { color: #9C27B0; }
+.rank-card:nth-child(4) .rank-icon { color: #FF9800; }
+.rank-card:nth-child(5) .rank-icon { color: #F44336; }
+.rank-card:nth-child(6) .rank-icon { color: #FFD700; }
+.rank-card:nth-child(7) .rank-icon { color: #E91E63; }
+.rank-card:nth-child(8) .rank-icon { color: #00BCD4; }
