@@ -23,7 +23,7 @@ const distPath = path.join(process.cwd(), 'dist');
 app.use(express.static(distPath));
 
 // Helper function to read data from db.json
-const readData = () => {
+export const readData = () => {
   try {
     if (fs.existsSync(DB_FILE)) {
       const data = fs.readFileSync(DB_FILE, 'utf8');
@@ -61,7 +61,7 @@ const readData = () => {
 };
 
 // Helper function to write data to db.json
-const writeData = (data) => {
+export const writeData = (data) => {
   try {
     fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2));
     return true;

@@ -1,0 +1,37 @@
+import Link from 'next/link';
+
+const Footer = () => {
+  return (
+    <footer>
+      <div className="footer-content">
+        <div className="footer-section">
+          <h3>Wither Networks</h3>
+          <p>Premium Minecraft server providing the best gameplay experience since 2025.</p>
+          <div className="social-links">
+            <a href="#" className="social-link"><i className="fab fa-discord"></i></a>
+            <a href="#" className="social-link"><i className="fab fa-twitter"></i></a>
+            <a href="#" className="social-link"><i className="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div className="footer-section">
+          <h3>Quick Links</h3>
+          <Link href="/">Home</Link>
+          <Link href="/about">About Us</Link>
+          <Link href="/game-modes">Game Modes</Link>
+          <Link href="/rules">Rules</Link>
+        </div>
+        <div className="footer-section">
+          <h3>Support</h3>
+          <Link href="/contact">Help Center</Link>
+          <Link href="/contact">Contact Us</Link>
+          <Link href="/ranks">Premium Ranks</Link>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <p>© 2025 Wither Networks | play.withernetworks.fun</p>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

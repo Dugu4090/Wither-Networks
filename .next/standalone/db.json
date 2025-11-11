@@ -1,0 +1,66 @@
+{
+  "heroTitle": "Welcome to Wither Networks",
+  "heroSubtitle": "Experience the ultimate gaming platform",
+  "stats": [
+    {
+      "value": "10K+",
+      "label": "Active Players"
+    },
+    {
+      "value": "50+",
+      "label": "Game Modes"
+    },
+    {
+      "value": "24/7",
+      "label": "Support"
+    }
+  ],
+  "features": [
+    {
+      "title": "High Performance",
+      "description": "Optimized servers for the best gaming experience"
+    },
+    {
+      "title": "Secure",
+      "description": "Advanced security to protect your data"
+    },
+    {
+      "title": "24/7 Support",
+      "description": "Round-the-clock customer support"
+    }
+  ],
+  "gameModes": [
+    {
+      "name": "Survival",
+      "description": "Classic survival gameplay",
+      "status": "LIVE"
+    },
+    {
+      "name": "Creative",
+      "description": "Unleash your creativity",
+      "status": "SOON!"
+    },
+    {
+      "name": "PvP",
+      "description": "Player versus player combat",
+      "status": "LIVE"
+    }
+  ],
+  "ranks": [
+    {
+      "name": "Bronze",
+      "description": "Starting rank for new players",
+      "price": "$2.99"
+    },
+    {
+      "name": "Silver",
+      "description": "For experienced players",
+      "price": "$7.99"
+    },
+    {
+      "name": "Gold",
+      "description": "Elite player rank",
+      "price": "$14.99"
+    }
+  ]
+}
