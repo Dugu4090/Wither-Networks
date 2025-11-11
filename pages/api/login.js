@@ -1,9 +1,4 @@
 import jwt from 'jsonwebtoken';
-import fs from 'fs';
-import path from 'path';
-
-const SECRET_KEY = process.env.SECRET_KEY || 'wither_networks_secret_key';
-const DB_FILE = path.join(process.cwd(), 'db.json');
 
 export default function handler(req, res) {
   if (req.method !== 'POST') {
@@ -14,6 +9,7 @@ export default function handler(req, res) {
   
   // Updated authentication with admin credentials
   if (username === 'admin' && password === 'admin') {
+    const SECRET_KEY = process.env.SECRET_KEY || 'wither_networks_secret_key';
     const token = jwt.sign({ username: 'admin' }, SECRET_KEY, { expiresIn: '1h' });
     return res.status(200).json({ token });
   }

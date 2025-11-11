@@ -1,13 +1,10 @@
-import jwt from 'jsonwebtoken';
 import fs from 'fs';
 import path from 'path';
-
-const SECRET_KEY = process.env.SECRET_KEY || 'wither_networks_secret_key';
-const DB_FILE = path.join(process.cwd(), 'db.json');
 
 // Helper function to read data from db.json
 const readData = () => {
   try {
+    const DB_FILE = path.join(process.cwd(), 'db.json');
     if (fs.existsSync(DB_FILE)) {
       const data = fs.readFileSync(DB_FILE, 'utf8');
       return JSON.parse(data);
@@ -46,28 +43,12 @@ const readData = () => {
 // Helper function to write data to db.json
 const writeData = (data) => {
   try {
+    const DB_FILE = path.join(process.cwd(), 'db.json');
     fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2));
     return true;
   } catch (error) {
     console.error('Error writing data:', error);
     return false;
-  }
-};
-
-// Authentication middleware
-const authenticateToken = (req, res) => {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
-
-  if (!token) {
-    return res.status(401).json({ error: 'Access token required' });
-  }
-
-  try {
-    const user = jwt.verify(token, SECRET_KEY);
-    return user;
-  } catch (err) {
-    return res.status(403).json({ error: 'Invalid or expired token' });
   }
 };
 
@@ -77,22 +58,8 @@ export default function handler(req, res) {
     const data = readData();
     return res.status(200).json(data);
   } else if (req.method === 'PUT') {
-    // Update content (requires authentication)
-    const user = authenticateToken(req, res);
-    // Check if authenticateToken already sent a response
-    if (!user || (user && user.error)) {
-      // authenticateToken already sent response
-      return;
-    }
-    
-    const updatedContent = req.body;
-    const success = writeData(updatedContent);
-    
-    if (success) {
-      return res.status(200).json(updatedContent);
-    } else {
-      return res.status(500).json({ error: 'Failed to update content' });
-    }
+    // For now, we'll just return an error for PUT requests since we don't want to allow public updates
+    return res.status(401).json({ error: 'Unauthorized' });
   } else {
     return res.status(405).json({ error: 'Method not allowed' });
   }
