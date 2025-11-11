@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getContent, updateContent } from '../utils/api';
+import { getContent, updateContent } from '../../utils/api';
 
 const AdminStats = ({ authToken, setMessage }) => {
   const [stats, setStats] = useState([]);

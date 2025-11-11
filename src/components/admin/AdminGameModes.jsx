@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getContent, updateContent } from '../utils/api';
+import { getContent, updateContent } from '../../utils/api';
 
 const AdminGameModes = ({ authToken, setMessage }) => {
   const [gameModes, setGameModes] = useState([]);

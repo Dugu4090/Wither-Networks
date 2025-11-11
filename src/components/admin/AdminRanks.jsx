@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getContent, updateContent } from '../utils/api';
+import { getContent, updateContent } from '../../utils/api';
 
 const AdminRanks = ({ authToken, setMessage }) => {
   const [ranks, setRanks] = useState([]);
@@ -65,12 +65,12 @@ const AdminRanks = ({ authToken, setMessage }) => {
   return (
     <div className="content-section">
       <div className="admin-header">
-        <h2>Ranks Management</h2>
+        <h2 className="minecraft-heading">Ranks Management</h2>
         <div className="admin-actions">
-          <button className="btn primary" onClick={handleSave}>
+          <button className="btn primary minecraft-button" onClick={handleSave}>
             Save Ranks
           </button>
-          <button className="btn secondary" onClick={addRank}>
+          <button className="btn secondary minecraft-button" onClick={addRank}>
             Add New Rank
           </button>
         </div>
@@ -78,12 +78,13 @@ const AdminRanks = ({ authToken, setMessage }) => {
 
       <div className="admin-section">
         {ranks.map((rank, index) => (
-          <div key={index} className="admin-rank-card">
+          <div key={index} className="admin-rank-card minecraft-card">
             <div className="form-row">
               <div className="form-group">
                 <label>Title</label>
                 <input
                   type="text"
+                  className="minecraft-input"
                   value={rank.name || ''}
                   onChange={(e) => updateRank(index, 'name', e.target.value)}
                 />
@@ -92,13 +93,14 @@ const AdminRanks = ({ authToken, setMessage }) => {
                 <label>Price</label>
                 <input
                   type="text"
+                  className="minecraft-input"
                   value={rank.price || ''}
                   onChange={(e) => updateRank(index, 'price', e.target.value)}
                 />
               </div>
               <div className="form-group">
                 <button 
-                  className="btn danger small" 
+                  className="btn danger small minecraft-button" 
                   onClick={() => removeRank(index)}
                   style={{ marginTop: '24px' }}
                 >
@@ -109,6 +111,7 @@ const AdminRanks = ({ authToken, setMessage }) => {
             <div className="form-group">
               <label>Description</label>
               <textarea
+                className="minecraft-input"
                 value={rank.description || ''}
                 onChange={(e) => updateRank(index, 'description', e.target.value)}
               />
