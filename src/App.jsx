@@ -9,6 +9,7 @@ import GameModes from './pages/GameModes';
 import Rules from './pages/Rules';
 import Ranks from './pages/Ranks';
 import Contact from './pages/Contact';
+import Admin from './pages/Admin';
 import './App.css';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/rules" element={<Rules />} />
         <Route path="/ranks" element={<Ranks />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
       <Footer />
     </Router>
