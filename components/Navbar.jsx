@@ -19,6 +19,10 @@ const Navbar = () => {
 
   return (
     <>
+      <a href="#" className="discord-float">
+        <i className="fab fa-discord"></i>
+      </a>
+      
       <header>
         <div className="header-content">
           <Link href="/" className="logo">
