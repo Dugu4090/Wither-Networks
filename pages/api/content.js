@@ -79,7 +79,8 @@ export default function handler(req, res) {
   } else if (req.method === 'PUT') {
     // Update content (requires authentication)
     const user = authenticateToken(req, res);
-    if (!user || user.error) {
+    // Check if authenticateToken already sent a response
+    if (!user || (user && user.error)) {
       // authenticateToken already sent response
       return;
     }
