@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getContent, updateContent } from '../utils/api';
+import { getContent, updateContent } from '../../components/utils/api';
 
 const AdminSettings = ({ authToken, setMessage }) => {
   const [settings, setSettings] = useState({
@@ -101,29 +101,31 @@ const AdminSettings = ({ authToken, setMessage }) => {
 
       <div className="admin-section">
         <h3>General Settings</h3>
-        <div className="form-group">
-          <label>Site Title</label>
-          <input
-            type="text"
-            value={settings.siteTitle}
-            onChange={(e) => updateSetting('siteTitle', e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Server IP</label>
-          <input
-            type="text"
-            value={settings.serverIP}
-            onChange={(e) => updateSetting('serverIP', e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Contact Email</label>
-          <input
-            type="email"
-            value={settings.contactEmail}
-            onChange={(e) => updateSetting('contactEmail', e.target.value)}
-          />
+        <div className="form-grid">
+          <div className="form-group">
+            <label>Site Title</label>
+            <input
+              type="text"
+              value={settings.siteTitle}
+              onChange={(e) => updateSetting('siteTitle', e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label>Server IP</label>
+            <input
+              type="text"
+              value={settings.serverIP}
+              onChange={(e) => updateSetting('serverIP', e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label>Contact Email</label>
+            <input
+              type="email"
+              value={settings.contactEmail}
+              onChange={(e) => updateSetting('contactEmail', e.target.value)}
+            />
+          </div>
         </div>
       </div>
     </div>

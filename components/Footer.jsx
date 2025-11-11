@@ -8,9 +8,7 @@ const Footer = () => {
           <h3>Wither Networks</h3>
           <p>Premium Minecraft server providing the best gameplay experience since 2025.</p>
           <div className="social-links">
-            <a href="#" className="social-link"><i className="fab fa-discord"></i></a>
-            <a href="#" className="social-link"><i className="fab fa-twitter"></i></a>
-            <a href="#" className="social-link"><i className="fab fa-youtube"></i></a>
+            <a href="#" className="social-link discord-link"><i className="fab fa-discord"></i></a>
           </div>
         </div>
         <div className="footer-section">

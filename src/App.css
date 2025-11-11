@@ -1114,6 +1114,7 @@ footer {
     display: flex;
     gap: 12px;
     margin-top: 16px;
+    justify-content: flex-start;
 }
 
 .social-link {
@@ -1125,15 +1126,28 @@ footer {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
-.social-link:hover {
-    background: var(--green);
+.discord-link {
+    background: #5865F2;
+}
+
+.discord-link:hover {
+    background: #4752c4;
     transform: translateY(-2px);
 }
 
 .social-link i {
     color: var(--white);
+    font-size: 18px;
+}
+
+/* Form Grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
 }
 
 .footer-bottom {
@@ -1388,5 +1402,18 @@ footer {
     
     .action-buttons {
         grid-template-columns: 1fr;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .admin-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab-button {
+        flex: 1 0 auto;
+        min-width: 120px;
     }
 }
