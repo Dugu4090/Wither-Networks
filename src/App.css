@@ -1114,7 +1114,7 @@ footer {
     display: flex;
     gap: 12px;
     margin-top: 16px;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .social-link {
@@ -1129,16 +1129,26 @@ footer {
     text-decoration: none;
     border: none;
     outline: none;
+    opacity: 0.7;
+}
+
+.social-link:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    border: none;
+    outline: none;
 }
 
 .discord-link {
     background: #5865F2;
     border: none;
     outline: none;
+    opacity: 0.8;
 }
 
 .discord-link:hover {
     background: #4752c4;
+    opacity: 1;
     transform: translateY(-2px);
     border: none;
     outline: none;
