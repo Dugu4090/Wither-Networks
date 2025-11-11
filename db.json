@@ -62,5 +62,71 @@
       "description": "Elite player rank",
       "price": "$14.99"
     }
-  ]
+  ],
+  "navigation": [
+    {
+      "path": "/",
+      "icon": "fa-home",
+      "label": "Home"
+    },
+    {
+      "path": "/about",
+      "icon": "fa-info-circle",
+      "label": "About"
+    },
+    {
+      "path": "/game-modes",
+      "icon": "fa-gamepad",
+      "label": "Games"
+    },
+    {
+      "path": "/rules",
+      "icon": "fa-gavel",
+      "label": "Rules"
+    },
+    {
+      "path": "/ranks",
+      "icon": "fa-crown",
+      "label": "Ranks"
+    },
+    {
+      "path": "/contact",
+      "icon": "fa-envelope",
+      "label": "Contact"
+    }
+  ],
+  "footerLinks": {
+    "quickLinks": [
+      {
+        "path": "/",
+        "label": "Home"
+      },
+      {
+        "path": "/about",
+        "label": "About Us"
+      },
+      {
+        "path": "/game-modes",
+        "label": "Game Modes"
+      },
+      {
+        "path": "/rules",
+        "label": "Rules"
+      }
+    ],
+    "supportLinks": [
+      {
+        "path": "/contact",
+        "label": "Help Center"
+      },
+      {
+        "path": "/contact",
+        "label": "Contact Us"
+      },
+      {
+        "path": "/ranks",
+        "label": "Premium Ranks"
+      }
+    ]
+  }
 }

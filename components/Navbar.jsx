@@ -1,19 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { getContent } from './utils/api';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const router = useRouter();
-
-  const navItems = [
+  const [navItems, setNavItems] = useState([
     { path: '/', icon: 'fa-home', label: 'Home' },
     { path: '/about', icon: 'fa-info-circle', label: 'About' },
     { path: '/game-modes', icon: 'fa-gamepad', label: 'Games' },
     { path: '/rules', icon: 'fa-gavel', label: 'Rules' },
     { path: '/ranks', icon: 'fa-crown', label: 'Ranks' },
     { path: '/contact', icon: 'fa-envelope', label: 'Contact' }
-  ];
+  ]);
+  const router = useRouter();
+
+  useEffect(() => {
+    // Fetch navigation data from API
+    const fetchNavData = async () => {
+      try {
+        const data = await getContent();
+        if (data.navigation && data.navigation.length > 0) {
+          setNavItems(data.navigation);
+        }
+      } catch (error) {
+        console.error('Error fetching navigation data:', error);
+        // Keep default nav items if API fails
+      }
+    };
+
+    fetchNavData();
+  }, []);
 
   const isActive = (path) => router.pathname === path;
 
