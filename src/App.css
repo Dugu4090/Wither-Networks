@@ -1110,11 +1110,29 @@ footer {
     color: var(--green);
 }
 
+.social-section {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
 .social-links {
     display: flex;
     gap: 12px;
     margin-top: 16px;
-    justify-content: center;
+    justify-content: flex-start;
+}
+
+@media (max-width: 768px) {
+    .social-section {
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
 }
 
 .social-link {
@@ -1140,14 +1158,14 @@ footer {
 }
 
 .discord-link {
-    background: #5865F2;
+    background: transparent;
     border: none;
     outline: none;
     opacity: 0.8;
 }
 
 .discord-link:hover {
-    background: #4752c4;
+    background: rgba(255, 255, 255, 0.1);
     opacity: 1;
     transform: translateY(-2px);
     border: none;
