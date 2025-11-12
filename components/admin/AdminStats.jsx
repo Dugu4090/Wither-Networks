@@ -1,15 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { getContent, updateContent } from '../utils/api';
 
 const AdminStats = ({ authToken, setMessage }) => {
   const [stats, setStats] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadStats();
-  }, []);
-
-  const loadStats = async () => {
+  const loadStats = useCallback(async () => {
     try {
       const data = await getContent();
       setStats(data.stats || []);
@@ -22,7 +18,11 @@ const AdminStats = ({ authToken, setMessage }) => {
       });
       setLoading(false);
     }
-  };
+  }, [setMessage]);
+
+  useEffect(() => {
+    loadStats();
+  }, [loadStats]);
 
   const handleSave = async () => {
     try {

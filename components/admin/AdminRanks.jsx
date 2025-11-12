@@ -1,15 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { getContent, updateContent } from '../utils/api';
 
 const AdminRanks = ({ authToken, setMessage }) => {
   const [ranks, setRanks] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadRanks();
-  }, []);
-
-  const loadRanks = async () => {
+  const loadRanks = useCallback(async () => {
     try {
       const data = await getContent();
       setRanks(data.ranks || []);
@@ -22,7 +18,11 @@ const AdminRanks = ({ authToken, setMessage }) => {
       });
       setLoading(false);
     }
-  };
+  }, [setMessage]);
+
+  useEffect(() => {
+    loadRanks();
+  }, [loadRanks]);
 
   const handleSave = async () => {
     try {

@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserShield, faBan, faShieldAlt, faComments, faHandshake, faGavel, faBuilding, faSwords, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faUserShield, faBan, faShieldAlt, faComments, faHandshake, faGavel, faBuilding, faFistRaised, faLock } from '@fortawesome/free-solid-svg-icons';
 
 const Rules = () => {
   const coreRegulations = [
@@ -53,7 +53,7 @@ const Rules = () => {
       ]
     },
     {
-      icon: faSwords,
+      icon: faFistRaised,
       title: 'Combat Guidelines',
       points: [
         'Respect designated PvP zones',

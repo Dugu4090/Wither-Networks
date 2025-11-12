@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDiscord, faEnvelope, faTicketAlt, faCogs, faCreditCard, faFlag } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faTicketAlt, faCogs, faCreditCard, faFlag } from '@fortawesome/free-solid-svg-icons';
+import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 
 const Contact = () => {
   const contactChannels = [

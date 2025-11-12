@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { getContent, updateContent } from '../../components/utils/api';
 
 const AdminSettings = ({ authToken, setMessage }) => {
@@ -14,11 +14,7 @@ const AdminSettings = ({ authToken, setMessage }) => {
   });
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadSettings();
-  }, []);
-
-  const loadSettings = async () => {
+  const loadSettings = useCallback(async () => {
     try {
       const data = await getContent();
       setSettings({
@@ -41,7 +37,11 @@ const AdminSettings = ({ authToken, setMessage }) => {
       });
       setLoading(false);
     }
-  };
+  }, [settings, setMessage]);
+
+  useEffect(() => {
+    loadSettings();
+  }, [loadSettings]);
 
   const handleSave = async () => {
     try {
@@ -167,7 +167,7 @@ const AdminSettings = ({ authToken, setMessage }) => {
         
         {settings.customFooterLinks.length === 0 ? (
           <div className="empty-state">
-            <p>No footer links added yet. Click "Add Link" to create your first footer link.</p>
+            <p>No footer links added yet. Click &quot;Add Link&quot; to create your first footer link.</p>
           </div>
         ) : (
           <div className="form-grid">

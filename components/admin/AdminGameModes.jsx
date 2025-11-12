@@ -1,15 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { getContent, updateContent } from '../utils/api';
 
 const AdminGameModes = ({ authToken, setMessage }) => {
   const [gameModes, setGameModes] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadGameModes();
-  }, []);
-
-  const loadGameModes = async () => {
+  const loadGameModes = useCallback(async () => {
     try {
       const data = await getContent();
       setGameModes(data.gameModes || []);
@@ -22,7 +18,11 @@ const AdminGameModes = ({ authToken, setMessage }) => {
       });
       setLoading(false);
     }
-  };
+  }, [setMessage]);
+
+  useEffect(() => {
+    loadGameModes();
+  }, [loadGameModes]);
 
   const handleSave = async () => {
     try {
