@@ -51,29 +51,27 @@ const Navbar = () => {
         </div>
       </header>
 
-      {mobileMenuOpen && (
-        <div className="mobile-menu" onClick={(e) => {
-          if (e.target.classList.contains('mobile-menu')) {
-            setMobileMenuOpen(false);
-          }
-        }}>
-          <div className="mobile-menu-content">
-            <ul>
-              {navItems.map(item => (
-                <li key={item.path}>
-                  <Link
-                    href={item.path}
-                    className={isActive(item.path) ? 'active' : ''}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <div className={`mobile-menu ${mobileMenuOpen ? 'active' : ''}`} onClick={(e) => {
+        if (e.target.classList.contains('mobile-menu')) {
+          setMobileMenuOpen(false);
+        }
+      }}>
+        <div className="mobile-menu-content">
+          <ul>
+            {navItems.map(item => (
+              <li key={item.path}>
+                <Link
+                  href={item.path}
+                  className={isActive(item.path) ? 'active' : ''}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-      )}
+      </div>
     </>
   );
 };
