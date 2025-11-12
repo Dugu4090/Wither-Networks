@@ -1,5 +1,139 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700;900&display=swap');
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add transitions to all interactive elements for a more polished feel */
+a, .btn, .cta-button, .feature-card, .stat-card, .mode-card, .rank-card {
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add hover effects with transitions */
+a:hover, .btn:hover, .cta-button:hover {
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add transitions to form elements */
+input, textarea, select, .form-group input, .form-group textarea, .form-group select {
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add transitions to navigation elements */
+nav a, .mobile-menu-content a, .footer-section a {
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add transitions to social links */
+.social-link {
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add transitions to the floating IP button */
+.floating-ip-button {
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add transitions to section elements for scroll animations */
+section {
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+/* Add fade-in animations for elements as they come into view */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Apply animations to sections */
+.hero {
+  animation: fadeIn 1s ease-out;
+}
+
+.features {
+  animation: fadeInUp 1s ease-out;
+}
+
+.stats {
+  animation: fadeIn 1.2s ease-out;
+}
+
+.game-modes-preview {
+  animation: fadeInUp 1.2s ease-out;
+}
+
+.ranks-preview {
+  animation: fadeIn 1.4s ease-out;
+}
+
+/* Apply animations to cards */
+.feature-card, .stat-card, .mode-card, .rank-card {
+  opacity: 0;
+  animation: fadeIn 0.6s forwards;
+}
+
+.feature-card:nth-child(1) { animation-delay: 0.1s; }
+.feature-card:nth-child(2) { animation-delay: 0.2s; }
+.feature-card:nth-child(3) { animation-delay: 0.3s; }
+.feature-card:nth-child(4) { animation-delay: 0.4s; }
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+.mode-card:nth-child(1) { animation-delay: 0.1s; }
+.mode-card:nth-child(2) { animation-delay: 0.2s; }
+.mode-card:nth-child(3) { animation-delay: 0.3s; }
+
+.rank-card:nth-child(1) { animation-delay: 0.1s; }
+.rank-card:nth-child(2) { animation-delay: 0.2s; }
+.rank-card:nth-child(3) { animation-delay: 0.3s; }
+.rank-card:nth-child(4) { animation-delay: 0.4s; }
+.rank-card:nth-child(5) { animation-delay: 0.5s; }
+.rank-card:nth-child(6) { animation-delay: 0.6s; }
+.rank-card:nth-child(7) { animation-delay: 0.7s; }
+.rank-card:nth-child(8) { animation-delay: 0.8s; }
+
 :root {
     /* Primary color palette */
     --primary-50: #f0f9ff;

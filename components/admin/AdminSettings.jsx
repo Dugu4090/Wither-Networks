@@ -21,7 +21,6 @@ const AdminSettings = ({ authToken, setMessage }) => {
     try {
       const data = await getContent();
       setSettings({
-        ...settings,
         heroTitle: data.heroTitle || '',
         heroSubtitle: data.heroSubtitle || '',
         siteTitle: 'Wither Networks - Premium Minecraft Server',
@@ -40,11 +39,11 @@ const AdminSettings = ({ authToken, setMessage }) => {
       });
       setLoading(false);
     }
-  }, [settings, setMessage]);
+  }, [setMessage]);
 
   useEffect(() => {
     loadSettings();
-  }, [loadSettings]);
+  }, []);
 
   const handleSave = async () => {
     try {
@@ -63,8 +62,9 @@ const AdminSettings = ({ authToken, setMessage }) => {
         type: 'success'
       });
     } catch (error) {
+      console.error('Save error:', error);
       setMessage({
-        text: 'Failed to save settings: ' + error.message,
+        text: 'Failed to save settings: ' + (error.message || 'Unknown error'),
         type: 'error'
       });
     }

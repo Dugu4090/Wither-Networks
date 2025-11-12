@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faMountain, faCloud, faLock, faUsers, faServer, faMedal, faGamepad, faGem, faCrown, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { getContent } from '../components/utils/api';
 
 const Home = () => {
   const [content, setContent] = useState(null);
@@ -9,42 +10,20 @@ const Home = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Mock data for the home page
-    const mockData = {
-      heroTitle: 'Welcome to Wither Networks',
-      heroSubtitle: 'Experience the ultimate Minecraft gaming platform with multiple game modes, active community, and 24/7 support.',
-      features: [
-        {
-          icon: faUsers,
-          title: 'Active Community',
-          description: 'Join our thriving community of players from around the world.'
-        },
-        {
-          icon: faServer,
-          title: 'Premium Servers',
-          description: 'Enjoy high-performance servers with 99.9% uptime guarantee.'
-        },
-        {
-          icon: faMedal,
-          title: 'Regular Events',
-          description: 'Participate in exciting events and competitions with amazing rewards.'
-        },
-        {
-          icon: faGamepad,
-          title: 'Multiple Modes',
-          description: 'Experience a variety of game modes including Survival, SkyBlock, Prison, and more.'
-        }
-      ],
-      stats: [
-        { value: '5,248', label: 'Registered Players' },
-        { value: '99.9%', label: 'Server Uptime' },
-        { value: '24/7', label: 'Support Team' },
-        { value: '12', label: 'Active Staff' }
-      ]
+    // Fetch data from API
+    const fetchData = async () => {
+      try {
+        const data = await getContent();
+        setContent(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching content:', error);
+        setError(error.message);
+        setLoading(false);
+      }
     };
     
-    setContent(mockData);
-    setLoading(false);
+    fetchData();
   }, []);
 
   if (loading) {

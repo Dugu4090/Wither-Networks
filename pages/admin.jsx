@@ -43,7 +43,6 @@ const Admin = () => {
       setPassword('');
     } catch (error) {
       console.error('Login error:', error);
-      setLoginError('Invalid credentials. Please try again.');
       // Show floating message for invalid credentials
       setMessage({
         text: 'Invalid credentials. Please try again.',
@@ -106,8 +105,6 @@ const Admin = () => {
                 required
               />
             </div>
-            
-            {loginError && <div className="error-message">{loginError}</div>}
             
             <button 
               type="submit" 

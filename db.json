@@ -99,34 +99,15 @@
   "footerLinks": {
     "quickLinks": [
       {
-        "path": "/",
-        "label": "Home"
-      },
-      {
-        "path": "/about",
-        "label": "About Us"
-      },
-      {
-        "path": "/game-modes",
-        "label": "Game Modes"
-      },
-      {
-        "path": "/rules",
-        "label": "Rules"
+        "path": "https://example.com",
+        "label": "Example",
+        "external": true
       }
     ],
     "supportLinks": [
       {
         "path": "/contact",
-        "label": "Help Center"
-      },
-      {
-        "path": "/contact",
         "label": "Contact Us"
-      },
-      {
-        "path": "/ranks",
-        "label": "Premium Ranks"
       }
     ]
   },

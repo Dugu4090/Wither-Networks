@@ -63,9 +63,15 @@ const Footer = () => {
               <ul>
                 {footerData.customLinks.map((link, index) => (
                   <li key={index}>
-                    <Link href={link.path} target={link.external ? "_blank" : "_self"} rel={link.external ? "noopener noreferrer" : ""}>
-                      {link.label}
-                    </Link>
+                    {link.external ? (
+                      <a href={link.path} target="_blank" rel="noopener noreferrer">
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link href={link.path}>
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

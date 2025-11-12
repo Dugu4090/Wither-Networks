@@ -42,10 +42,20 @@ const readData = () => {
 };
 
 // Helper function to write data to db.json
-const writeData = (data) => {
+const writeData = (newData) => {
   try {
     const DB_FILE = path.join(process.cwd(), 'db.json');
-    fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2));
+    // Read existing data
+    let existingData = {};
+    if (fs.existsSync(DB_FILE)) {
+      const fileContent = fs.readFileSync(DB_FILE, 'utf8');
+      existingData = JSON.parse(fileContent);
+    }
+    
+    // Merge new data with existing data
+    const mergedData = { ...existingData, ...newData };
+    
+    fs.writeFileSync(DB_FILE, JSON.stringify(mergedData, null, 2));
     return true;
   } catch (error) {
     console.error('Error writing data:', error);
