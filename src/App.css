@@ -283,6 +283,10 @@ nav a.active::after {
     backdrop-filter: blur(5px);
 }
 
+.mobile-menu.active {
+    display: block;
+}
+
 .mobile-menu-content {
     background: var(--surface);
     width: 80%;
@@ -1142,10 +1146,6 @@ footer {
     .cta-buttons {
         flex-direction: column;
         align-items: center;
-    }
-    
-    .mobile-menu.active {
-        display: block;
     }
     
     section h2 {
