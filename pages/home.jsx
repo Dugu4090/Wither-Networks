@@ -145,9 +145,6 @@ const Home = () => {
               <li>Regular events and competitions</li>
               <li>Active community</li>
             </ul>
-            <Link href="/modes" className="btn">
-              Learn More
-            </Link>
           </div>
           
           <div className="mode-card">
@@ -164,9 +161,6 @@ const Home = () => {
               <li>Special rewards system</li>
               <li>Regular updates</li>
             </ul>
-            <Link href="/modes" className="btn">
-              Learn More
-            </Link>
           </div>
           
           <div className="mode-card">
@@ -183,9 +177,6 @@ const Home = () => {
               <li>Mining challenges</li>
               <li>Rewards and perks</li>
             </ul>
-            <Link href="/modes" className="btn">
-              Learn More
-            </Link>
           </div>
         </div>
         <div className="cta-buttons" style={{ marginTop: '2rem', justifyContent: 'center' }}>
@@ -219,9 +210,6 @@ const Home = () => {
                 2 private vaults
               </li>
             </ul>
-            <Link href="/ranks" className="btn">
-              Learn More
-            </Link>
           </div>
           
           <div className="rank-card">
@@ -244,9 +232,6 @@ const Home = () => {
                 5 private vaults
               </li>
             </ul>
-            <Link href="/ranks" className="btn">
-              Learn More
-            </Link>
           </div>
           
           <div className="rank-card">
@@ -269,9 +254,6 @@ const Home = () => {
                 8 private vaults
               </li>
             </ul>
-            <Link href="/ranks" className="btn">
-              Learn More
-            </Link>
           </div>
         </div>
         <div className="cta-buttons" style={{ marginTop: '2rem', justifyContent: 'center' }}>
