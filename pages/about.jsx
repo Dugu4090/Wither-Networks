@@ -1,4 +1,60 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrophy, faBalanceScale, faChartLine, faShieldAlt, faServer, faNetworkWired, faLock, faDatabase } from '@fortawesome/free-solid-svg-icons';
+
 const About = () => {
+  const coreValues = [
+    {
+      icon: faTrophy,
+      title: 'Excellence',
+      description: 'We maintain the highest standards in server performance, feature development, and player support. Every system is optimized for maximum efficiency.'
+    },
+    {
+      icon: faBalanceScale,
+      title: 'Integrity',
+      description: 'Zero-tolerance policy for cheating. Our military-grade anti-cheat systems ensure a level playing field for all competitive players.'
+    },
+    {
+      icon: faChartLine,
+      title: 'Innovation',
+      description: 'Continuous development of proprietary features and game mechanics that push the boundaries of what\'s possible in Minecraft.'
+    },
+    {
+      icon: faShieldAlt,
+      title: 'Security',
+      description: 'Enterprise-level security protocols protect player data and ensure safe, stable gameplay 24/7/365.'
+    }
+  ];
+
+  const infrastructure = [
+    {
+      icon: faServer,
+      title: 'Enterprise Hardware',
+      description: 'Dedicated servers with latest-generation processors and NVMe SSDs ensure zero-lag gameplay.'
+    },
+    {
+      icon: faNetworkWired,
+      title: 'Global Network',
+      description: 'Strategically positioned data centers provide optimal latency for players worldwide.'
+    },
+    {
+      icon: faLock,
+      title: 'DDoS Protection',
+      description: 'Multi-layered security infrastructure protects against attacks and ensures uninterrupted service.'
+    },
+    {
+      icon: faDatabase,
+      title: 'Data Redundancy',
+      description: 'Automated backup systems and failover protocols guarantee data integrity and availability.'
+    }
+  ];
+
+  const stats = [
+    { value: '2025', label: 'Established' },
+    { value: '50K+', label: 'Total Players' },
+    { value: '99.9%', label: 'Uptime' },
+    { value: '24/7', label: 'Support Available' }
+  ];
+
   return (
     <div className="container">
       <div className="page-header">
@@ -19,87 +75,35 @@ const About = () => {
       <section className="features">
         <h2>Core Values</h2>
         <div className="features-grid">
-          <div className="feature-card">
-            <div className="feature-icon">
-              <i className="fas fa-trophy"></i>
+          {coreValues.map((value, index) => (
+            <div className="feature-card" key={index}>
+              <FontAwesomeIcon icon={value.icon} className="feature-icon" />
+              <h3>{value.title}</h3>
+              <p>{value.description}</p>
             </div>
-            <h3>Excellence</h3>
-            <p>We maintain the highest standards in server performance, feature development, and player support. Every system is optimized for maximum efficiency.</p>
-          </div>
-          <div className="feature-card">
-            <div className="feature-icon">
-              <i className="fas fa-balance-scale"></i>
-            </div>
-            <h3>Integrity</h3>
-            <p>Zero-tolerance policy for cheating. Our military-grade anti-cheat systems ensure a level playing field for all competitive players.</p>
-          </div>
-          <div className="feature-card">
-            <div className="feature-icon">
-              <i className="fas fa-chart-line"></i>
-            </div>
-            <h3>Innovation</h3>
-            <p>Continuous development of proprietary features and game mechanics that push the boundaries of what&apos;s possible in Minecraft.</p>
-          </div>
-          <div className="feature-card">
-            <div className="feature-icon">
-              <i className="fas fa-shield-alt"></i>
-            </div>
-            <h3>Security</h3>
-            <p>Enterprise-level security protocols protect player data and ensure safe, stable gameplay 24/7/365.</p>
-          </div>
+          ))}
         </div>
       </section>
 
       <section className="stats">
-        <div className="stat-card">
-          <div className="stat-number">2025</div>
-          <div className="stat-label">Established</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-number">50K+</div>
-          <div className="stat-label">Total Players</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-number">99.9%</div>
-          <div className="stat-label">Uptime</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-number">24/7</div>
-          <div className="stat-label">Support Available</div>
-        </div>
+        {stats.map((stat, index) => (
+          <div className="stat-card" key={index}>
+            <div className="stat-number">{stat.value}</div>
+            <div className="stat-label">{stat.label}</div>
+          </div>
+        ))}
       </section>
 
       <section className="features">
         <h2>Infrastructure</h2>
         <div className="features-grid">
-          <div className="feature-card">
-            <div className="feature-icon">
-              <i className="fas fa-server"></i>
+          {infrastructure.map((item, index) => (
+            <div className="feature-card" key={index}>
+              <FontAwesomeIcon icon={item.icon} className="feature-icon" />
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
             </div>
-            <h3>Enterprise Hardware</h3>
-            <p>Dedicated servers with latest-generation processors and NVMe SSDs ensure zero-lag gameplay.</p>
-          </div>
-          <div className="feature-card">
-            <div className="feature-icon">
-              <i className="fas fa-network-wired"></i>
-            </div>
-            <h3>Global Network</h3>
-            <p>Strategically positioned data centers provide optimal latency for players worldwide.</p>
-          </div>
-          <div className="feature-card">
-            <div className="feature-icon">
-              <i className="fas fa-lock"></i>
-            </div>
-            <h3>DDoS Protection</h3>
-            <p>Multi-layered security infrastructure protects against attacks and ensures uninterrupted service.</p>
-          </div>
-          <div className="feature-card">
-            <div className="feature-icon">
-              <i className="fas fa-database"></i>
-            </div>
-            <h3>Data Redundancy</h3>
-            <p>Automated backup systems and failover protocols guarantee data integrity and availability.</p>
-          </div>
+          ))}
         </div>
       </section>
     </div>

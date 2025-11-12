@@ -9,19 +9,8 @@ const AdminSettings = ({ authToken, setMessage }) => {
     serverIP: 'play.withernetworks.fun',
     contactEmail: 'support@withernetworks.fun',
     discordLink: '',
-    footerLinks: {
-      quickLinks: [
-        { path: '/', label: 'Home' },
-        { path: '/about', label: 'About Us' },
-        { path: '/game-modes', label: 'Game Modes' },
-        { path: '/rules', label: 'Rules' }
-      ],
-      supportLinks: [
-        { path: '/contact', label: 'Help Center' },
-        { path: '/contact', label: 'Contact Us' },
-        { path: '/ranks', label: 'Premium Ranks' }
-      ]
-    }
+    customFooterLinks: [],
+    copyrightText: '© 2025 Wither Networks | play.withernetworks.fun'
   });
   const [loading, setLoading] = useState(true);
 
@@ -40,7 +29,8 @@ const AdminSettings = ({ authToken, setMessage }) => {
         serverIP: 'play.withernetworks.fun',
         contactEmail: 'support@withernetworks.fun',
         discordLink: data.discordLink || '',
-        footerLinks: data.footerLinks || settings.footerLinks
+        customFooterLinks: data.customFooterLinks || [],
+        copyrightText: data.copyrightText || '© 2025 Wither Networks | play.withernetworks.fun'
       });
       setLoading(false);
     } catch (error) {
@@ -61,7 +51,8 @@ const AdminSettings = ({ authToken, setMessage }) => {
         heroTitle: settings.heroTitle,
         heroSubtitle: settings.heroSubtitle,
         discordLink: settings.discordLink,
-        footerLinks: settings.footerLinks
+        customFooterLinks: settings.customFooterLinks,
+        copyrightText: settings.copyrightText
       };
       await updateContent(updatedContent, authToken);
       setMessage({
@@ -83,36 +74,37 @@ const AdminSettings = ({ authToken, setMessage }) => {
     });
   };
 
-  
-
-  const updateFooterLink = (section, index, field, value) => {
-    const newFooterLinks = { ...settings.footerLinks };
-    newFooterLinks[section][index] = { ...newFooterLinks[section][index], [field]: value };
+  const updateFooterLink = (index, field, value) => {
+    const newFooterLinks = [...settings.customFooterLinks];
+    newFooterLinks[index] = { ...newFooterLinks[index], [field]: value };
     setSettings({
       ...settings,
-      footerLinks: newFooterLinks
+      customFooterLinks: newFooterLinks
     });
   };
 
-  
-
-  
-
-  const addFooterLink = (section) => {
-    const newFooterLinks = { ...settings.footerLinks };
-    newFooterLinks[section].push({ path: '', label: '' });
+  const addFooterLink = () => {
     setSettings({
       ...settings,
-      footerLinks: newFooterLinks
+      customFooterLinks: [...settings.customFooterLinks, { path: '', label: '', external: false }]
     });
   };
 
-  const removeFooterLink = (section, index) => {
-    const newFooterLinks = { ...settings.footerLinks };
-    newFooterLinks[section].splice(index, 1);
+  const removeFooterLink = (index) => {
+    const newFooterLinks = [...settings.customFooterLinks];
+    newFooterLinks.splice(index, 1);
     setSettings({
       ...settings,
-      footerLinks: newFooterLinks
+      customFooterLinks: newFooterLinks
+    });
+  };
+
+  const toggleExternalLink = (index) => {
+    const newFooterLinks = [...settings.customFooterLinks];
+    newFooterLinks[index] = { ...newFooterLinks[index], external: !newFooterLinks[index].external };
+    setSettings({
+      ...settings,
+      customFooterLinks: newFooterLinks
     });
   };
 
@@ -151,7 +143,7 @@ const AdminSettings = ({ authToken, setMessage }) => {
       </div>
 
       <div className="admin-section">
-        <h3>Discord Link</h3>
+        <h3>Social Links</h3>
         <div className="form-group">
           <label>Discord Server Link</label>
           <input
@@ -166,77 +158,70 @@ const AdminSettings = ({ authToken, setMessage }) => {
 
       <div className="admin-section">
         <div className="admin-header">
-          <h3>Footer Links - Quick Links</h3>
-          <button className="btn secondary" onClick={() => addFooterLink('quickLinks')}>
+          <h3>Custom Footer Links</h3>
+          <button className="btn secondary" onClick={addFooterLink}>
             Add Link
           </button>
         </div>
-        <div className="form-grid">
-          {settings.footerLinks.quickLinks.map((link, index) => (
-            <div key={index} className="form-group">
-              <div className="admin-header">
-                <h4>Quick Link {index + 1}</h4>
-                {settings.footerLinks.quickLinks.length > 1 && (
+        <p>Add custom links to appear in the footer. These can be internal pages or external websites.</p>
+        
+        {settings.customFooterLinks.length === 0 ? (
+          <div className="empty-state">
+            <p>No footer links added yet. Click "Add Link" to create your first footer link.</p>
+          </div>
+        ) : (
+          <div className="form-grid">
+            {settings.customFooterLinks.map((link, index) => (
+              <div key={index} className="form-group">
+                <div className="admin-header">
+                  <h4>Footer Link {index + 1}</h4>
                   <button 
                     className="btn danger small" 
-                    onClick={() => removeFooterLink('quickLinks', index)}
+                    onClick={() => removeFooterLink(index)}
                   >
                     Remove
                   </button>
-                )}
+                </div>
+                <label>Path/URL</label>
+                <input
+                  type="text"
+                  value={link.path}
+                  onChange={(e) => updateFooterLink(index, 'path', e.target.value)}
+                  placeholder="/page or https://example.com"
+                />
+                <label>Label</label>
+                <input
+                  type="text"
+                  value={link.label}
+                  onChange={(e) => updateFooterLink(index, 'label', e.target.value)}
+                  placeholder="Link text"
+                />
+                <div className="form-group">
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={link.external || false}
+                      onChange={() => toggleExternalLink(index)}
+                    />
+                    Open in new tab (external link)
+                  </label>
+                </div>
               </div>
-              <label>Path</label>
-              <input
-                type="text"
-                value={link.path}
-                onChange={(e) => updateFooterLink('quickLinks', index, 'path', e.target.value)}
-              />
-              <label>Label</label>
-              <input
-                type="text"
-                value={link.label}
-                onChange={(e) => updateFooterLink('quickLinks', index, 'label', e.target.value)}
-              />
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="admin-section">
-        <div className="admin-header">
-          <h3>Footer Links - Support Links</h3>
-          <button className="btn secondary" onClick={() => addFooterLink('supportLinks')}>
-            Add Link
-          </button>
-        </div>
-        <div className="form-grid">
-          {settings.footerLinks.supportLinks.map((link, index) => (
-            <div key={index} className="form-group">
-              <div className="admin-header">
-                <h4>Support Link {index + 1}</h4>
-                {settings.footerLinks.supportLinks.length > 1 && (
-                  <button 
-                    className="btn danger small" 
-                    onClick={() => removeFooterLink('supportLinks', index)}
-                  >
-                    Remove
-                  </button>
-                )}
-              </div>
-              <label>Path</label>
-              <input
-                type="text"
-                value={link.path}
-                onChange={(e) => updateFooterLink('supportLinks', index, 'path', e.target.value)}
-              />
-              <label>Label</label>
-              <input
-                type="text"
-                value={link.label}
-                onChange={(e) => updateFooterLink('supportLinks', index, 'label', e.target.value)}
-              />
-            </div>
-          ))}
+        <h3>Copyright Text</h3>
+        <div className="form-group">
+          <label>Footer Copyright Text</label>
+          <input
+            type="text"
+            value={settings.copyrightText}
+            onChange={(e) => updateSetting('copyrightText', e.target.value)}
+            placeholder="© 2025 Your Server Name"
+          />
         </div>
       </div>
 

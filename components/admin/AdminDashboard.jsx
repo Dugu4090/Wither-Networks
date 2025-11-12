@@ -1,4 +1,4 @@
-const AdminDashboard = () => {
+const AdminDashboard = ({ onTabChange }) => {
   return (
     <div className="content-section">
       <h2>Dashboard Overview</h2>
@@ -24,17 +24,30 @@ const AdminDashboard = () => {
       <div className="admin-actions">
         <h3>Quick Actions</h3>
         <div className="action-buttons">
-          <button className="btn secondary">
+          <button className="btn secondary" onClick={() => onTabChange('settings')}>
             Edit Homepage Content
           </button>
-          <button className="btn secondary">
+          <button className="btn secondary" onClick={() => onTabChange('settings')}>
             Manage Users
           </button>
-          <button className="btn secondary">
+          <button className="btn secondary" onClick={() => onTabChange('settings')}>
             View Analytics
           </button>
-          <button className="btn secondary">
+          <button className="btn secondary" onClick={() => onTabChange('settings')}>
             Server Controls
+          </button>
+        </div>
+      </div>
+      
+      <div className="admin-actions" style={{ marginTop: '2rem' }}>
+        <h3>Server Information</h3>
+        <div className="action-buttons">
+          <button className="server-ip-btn" onClick={() => {
+            navigator.clipboard.writeText('play.withernetworks.fun');
+            alert('Server IP copied to clipboard!');
+          }}>
+            <i className="fas fa-copy"></i>
+            Copy Server IP: play.withernetworks.fun
           </button>
         </div>
       </div>

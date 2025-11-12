@@ -1,7 +1,10 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGem, faStar, faCrown, faTrophy, faChessKing, faBolt, faDragon, faInfinity, faCheck } from '@fortawesome/free-solid-svg-icons';
+
 const Ranks = () => {
   const ranks = [
     {
-      icon: 'fa-gem',
+      icon: faGem,
       name: 'VIP',
       priceUsd: '$1.99',
       perks: [
@@ -12,7 +15,7 @@ const Ranks = () => {
       ]
     },
     {
-      icon: 'fa-star',
+      icon: faStar,
       name: 'PRO',
       priceUsd: '$4.99',
       perks: [
@@ -23,7 +26,7 @@ const Ranks = () => {
       ]
     },
     {
-      icon: 'fa-crown',
+      icon: faCrown,
       name: 'SUPREME',
       priceUsd: '$6.99',
       perks: [
@@ -34,7 +37,7 @@ const Ranks = () => {
       ]
     },
     {
-      icon: 'fa-trophy',
+      icon: faTrophy,
       name: 'LEGEND',
       priceUsd: '$9.99',
       perks: [
@@ -45,7 +48,7 @@ const Ranks = () => {
       ]
     },
     {
-      icon: 'fa-chess-king',
+      icon: faChessKing,
       name: 'WITHER',
       priceUsd: '$12.99',
       perks: [
@@ -56,7 +59,7 @@ const Ranks = () => {
       ]
     },
     {
-      icon: 'fa-bolt',
+      icon: faBolt,
       name: 'ZEUS',
       priceUsd: '$16.99',
       perks: [
@@ -67,7 +70,7 @@ const Ranks = () => {
       ]
     },
     {
-      icon: 'fa-dragon',
+      icon: faDragon,
       name: 'MYTHIC',
       priceUsd: '$19.99',
       perks: [
@@ -78,7 +81,7 @@ const Ranks = () => {
       ]
     },
     {
-      icon: 'fa-infinity',
+      icon: faInfinity,
       name: 'ELITE',
       priceUsd: '$24.99',
       perks: [
@@ -98,68 +101,23 @@ const Ranks = () => {
       </div>
 
       <section className="ranks-section">
-        <div className="ranks-container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', marginTop: '60px' }}>
+        <div className="ranks-grid">
           {ranks.map((rank, index) => (
-            <div className="rank-card" key={index} style={{
-              background: 'var(--dark-grey)',
-              border: '1px solid rgba(255, 255, 255, 0.05)',
-              borderRadius: '12px',
-              padding: '32px',
-              textAlign: 'center',
-              transition: 'all 0.3s ease'
-            }}>
-              <div className="rank-icon" style={{
-                width: '72px',
-                height: '72px',
-                background: 'rgba(34, 197, 94, 0.1)',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                margin: '0 auto 20px',
-                fontSize: '32px',
-                color: 'var(--green)'
-              }}>
-                <i className={`fas ${rank.icon}`}></i>
+            <div className="rank-card" key={index}>
+              <div className="rank-icon">
+                <FontAwesomeIcon icon={rank.icon} />
               </div>
-              <h3 style={{
-                fontFamily: 'Orbitron, sans-serif',
-                fontSize: '1.5rem',
-                color: 'var(--white)',
-                marginBottom: '12px',
-                fontWeight: 700
-              }}>{rank.name}</h3>
-              <div style={{
-                fontFamily: 'Orbitron, sans-serif',
-                fontSize: '1.75rem',
-                color: 'var(--green)',
-                fontWeight: 700,
-                marginBottom: '24px'
-              }}>{rank.priceUsd}</div>
-              <ul style={{
-                listStyle: 'none',
-                padding: 0,
-                textAlign: 'left',
-                marginBottom: '24px'
-              }}>
+              <h3 className="rank-name">{rank.name}</h3>
+              <div className="rank-price">{rank.priceUsd}</div>
+              <ul className="rank-perks">
                 {rank.perks.map((perk, i) => (
-                  <li key={i} style={{
-                    padding: '10px 0',
-                    color: 'var(--light-grey)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '10px',
-                    fontSize: '14px'
-                  }}>
-                    <i className="fas fa-check" style={{ color: 'var(--green)' }}></i> {perk}
+                  <li key={i}>
+                    <FontAwesomeIcon icon={faCheck} className="perk-icon" />
+                    {perk}
                   </li>
                 ))}
               </ul>
-              <a href="#" className="btn primary" style={{
-                width: '100%',
-                justifyContent: 'center',
-                textDecoration: 'none'
-              }}>Purchase Rank</a>
+              <a href="#" className="btn primary">Purchase Rank</a>
             </div>
           ))}
         </div>

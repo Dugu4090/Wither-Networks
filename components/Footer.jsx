@@ -1,23 +1,14 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import { getContent } from './utils/api';
 
 const Footer = () => {
   const [footerData, setFooterData] = useState({
-    footerLinks: {
-      quickLinks: [
-        { path: '/', label: 'Home' },
-        { path: '/about', label: 'About Us' },
-        { path: '/game-modes', label: 'Game Modes' },
-        { path: '/rules', label: 'Rules' }
-      ],
-      supportLinks: [
-        { path: '/contact', label: 'Help Center' },
-        { path: '/contact', label: 'Contact Us' },
-        { path: '/ranks', label: 'Premium Ranks' }
-      ]
-    },
-    discordLink: '#'
+    customLinks: [],
+    discordLink: '#',
+    copyrightText: '© 2025 Wither Networks | play.withernetworks.fun'
   });
 
   useEffect(() => {
@@ -25,10 +16,11 @@ const Footer = () => {
     const fetchFooterData = async () => {
       try {
         const data = await getContent();
-        if (data.footerLinks || data.discordLink) {
+        if (data) {
           setFooterData({
-            footerLinks: data.footerLinks || footerData.footerLinks,
-            discordLink: data.discordLink || '#'
+            customLinks: data.footerLinks || [],
+            discordLink: data.discordLink || '#',
+            copyrightText: data.copyrightText || '© 2025 Wither Networks | play.withernetworks.fun'
           });
         }
       } catch (error) {
@@ -42,31 +34,36 @@ const Footer = () => {
 
   return (
     <footer>
-      <div className="footer-content">
-        <div className="footer-section">
-          <h3>Wither Networks</h3>
-          <p>Premium Minecraft server providing the best gameplay experience since 2025.</p>
-          <div className="social-links">
-            <a href={footerData.discordLink} className="social-link discord-link">
-              <i className="fab fa-discord"></i>
-            </a>
+      <div className="container">
+        <div className="footer-content">
+          <div className="footer-section">
+            <h3>Wither Networks</h3>
+            <p>Premium Minecraft server providing the best gameplay experience since 2025.</p>
+            <div className="social-links">
+              <a href={footerData.discordLink} className="social-link" aria-label="Discord" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faDiscord} />
+              </a>
+            </div>
           </div>
+          
+          {footerData.customLinks && footerData.customLinks.length > 0 && (
+            <div className="footer-section">
+              <h3>Links</h3>
+              <ul>
+                {footerData.customLinks.map((link, index) => (
+                  <li key={index}>
+                    <Link href={link.path} target={link.external ? "_blank" : "_self"} rel={link.external ? "noopener noreferrer" : ""}>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
-        <div className="footer-section">
-          <h3>Quick Links</h3>
-          {footerData.footerLinks.quickLinks.map((link, index) => (
-            <Link key={index} href={link.path}>{link.label}</Link>
-          ))}
+        <div className="footer-bottom">
+          <p>{footerData.copyrightText}</p>
         </div>
-        <div className="footer-section">
-          <h3>Support</h3>
-          {footerData.footerLinks.supportLinks.map((link, index) => (
-            <Link key={index} href={link.path}>{link.label}</Link>
-          ))}
-        </div>
-      </div>
-      <div className="footer-bottom">
-        <p>© 2025 Wither Networks | play.withernetworks.fun</p>
       </div>
     </footer>
   );

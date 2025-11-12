@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import { login } from '../components/utils/api';
 import FloatingMessage from '../components/FloatingMessage';
 import AdminDashboard from '../components/admin/AdminDashboard';
@@ -66,11 +67,12 @@ const Admin = () => {
 
   if (!isLoggedIn) {
     return (
-      <div className="container">
-        <section className="page-header">
-          <h1>Admin Login</h1>
-          <p>Access the administrative dashboard</p>
-        </section>
+      <div className="admin-container">
+        <div className="container">
+          <section className="page-header">
+            <h1>Admin Login</h1>
+            <p>Access the administrative dashboard</p>
+          </section>
         
         <section className="content-section">
           {/* Floating Message for invalid credentials */}
@@ -117,18 +119,20 @@ const Admin = () => {
           </form>
         </section>
       </div>
+    </div>
     );
   }
 
   return (
-    <div className="container">
-      <section className="page-header">
-        <div className="admin-header">
-          <h1>Admin Dashboard</h1>
-          <button onClick={handleLogout} className="btn secondary">Logout</button>
-        </div>
-        <p>Manage your website content</p>
-      </section>
+    <div className="admin-container">
+      <div className="container">
+        <section className="page-header">
+          <div className="admin-header">
+            <h1>Admin Dashboard</h1>
+            <button onClick={handleLogout} className="btn secondary">Logout</button>
+          </div>
+          <p>Manage your website content</p>
+        </section>
 
       {/* Floating Message */}
       {message && (
@@ -178,13 +182,14 @@ const Admin = () => {
         </button>
       </div>
 
-      {activeTab === 'dashboard' && <AdminDashboard />}
+      {activeTab === 'dashboard' && <AdminDashboard onTabChange={setActiveTab} />}
       {activeTab === 'settings' && <AdminSettings authToken={authToken} setMessage={setMessage} />}
       {activeTab === 'ranks' && <AdminRanks authToken={authToken} setMessage={setMessage} />}
       {activeTab === 'gamemodes' && <AdminGameModes authToken={authToken} setMessage={setMessage} />}
       {activeTab === 'features' && <AdminFeatures authToken={authToken} setMessage={setMessage} />}
       {activeTab === 'stats' && <AdminStats authToken={authToken} setMessage={setMessage} />}
-    </div>
+        </div>
+      </div>
   );
 };
 
