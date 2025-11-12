@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import jwt from 'jsonwebtoken';
 
 // Helper function to read data from db.json
 const readData = () => {
@@ -52,14 +53,45 @@ const writeData = (data) => {
   }
 };
 
+// Helper function to verify JWT token
+const verifyToken = (token) => {
+  try {
+    const SECRET_KEY = process.env.SECRET_KEY || 'wither_networks_secret_key';
+    const decoded = jwt.verify(token, SECRET_KEY);
+    return decoded;
+  } catch (error) {
+    return null;
+  }
+};
+
 export default function handler(req, res) {
   if (req.method === 'GET') {
     // Get all content
     const data = readData();
     return res.status(200).json(data);
   } else if (req.method === 'PUT') {
-    // For now, we'll just return an error for PUT requests since we don't want to allow public updates
-    return res.status(401).json({ error: 'Unauthorized' });
+    // Check for authorization header
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ error: 'Missing or invalid authorization header' });
+    }
+    
+    // Extract token
+    const token = authHeader.substring(7); // Remove 'Bearer ' prefix
+    
+    // Verify token
+    const decoded = verifyToken(token);
+    if (!decoded) {
+      return res.status(401).json({ error: 'Invalid or expired token' });
+    }
+    
+    // Update content
+    const success = writeData(req.body);
+    if (success) {
+      return res.status(200).json({ message: 'Content updated successfully' });
+    } else {
+      return res.status(500).json({ error: 'Failed to update content' });
+    }
   } else {
     return res.status(405).json({ error: 'Method not allowed' });
   }

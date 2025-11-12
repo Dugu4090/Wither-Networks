@@ -9,7 +9,10 @@ const AdminSettings = ({ authToken, setMessage }) => {
     serverIP: 'play.withernetworks.fun',
     contactEmail: 'support@withernetworks.fun',
     discordLink: '',
-    customFooterLinks: [],
+    customFooterLinks: {
+      quickLinks: [],
+      supportLinks: []
+    },
     copyrightText: '© 2025 Wither Networks | play.withernetworks.fun'
   });
   const [loading, setLoading] = useState(true);
@@ -25,7 +28,7 @@ const AdminSettings = ({ authToken, setMessage }) => {
         serverIP: 'play.withernetworks.fun',
         contactEmail: 'support@withernetworks.fun',
         discordLink: data.discordLink || '',
-        customFooterLinks: data.customFooterLinks || [],
+        customFooterLinks: data.footerLinks || { quickLinks: [], supportLinks: [] },
         copyrightText: data.copyrightText || '© 2025 Wither Networks | play.withernetworks.fun'
       });
       setLoading(false);
@@ -51,7 +54,7 @@ const AdminSettings = ({ authToken, setMessage }) => {
         heroTitle: settings.heroTitle,
         heroSubtitle: settings.heroSubtitle,
         discordLink: settings.discordLink,
-        customFooterLinks: settings.customFooterLinks,
+        footerLinks: settings.customFooterLinks,
         copyrightText: settings.copyrightText
       };
       await updateContent(updatedContent, authToken);
@@ -74,34 +77,37 @@ const AdminSettings = ({ authToken, setMessage }) => {
     });
   };
 
-  const updateFooterLink = (index, field, value) => {
-    const newFooterLinks = [...settings.customFooterLinks];
-    newFooterLinks[index] = { ...newFooterLinks[index], [field]: value };
+  const updateFooterLink = (section, index, field, value) => {
+    const newFooterLinks = { ...settings.customFooterLinks };
+    newFooterLinks[section][index] = { ...newFooterLinks[section][index], [field]: value };
     setSettings({
       ...settings,
       customFooterLinks: newFooterLinks
     });
   };
 
-  const addFooterLink = () => {
+  const addFooterLink = (section) => {
     setSettings({
       ...settings,
-      customFooterLinks: [...settings.customFooterLinks, { path: '', label: '', external: false }]
+      customFooterLinks: {
+        ...settings.customFooterLinks,
+        [section]: [...settings.customFooterLinks[section], { path: '', label: '', external: false }]
+      }
     });
   };
 
-  const removeFooterLink = (index) => {
-    const newFooterLinks = [...settings.customFooterLinks];
-    newFooterLinks.splice(index, 1);
+  const removeFooterLink = (section, index) => {
+    const newFooterLinks = { ...settings.customFooterLinks };
+    newFooterLinks[section].splice(index, 1);
     setSettings({
       ...settings,
       customFooterLinks: newFooterLinks
     });
   };
 
-  const toggleExternalLink = (index) => {
-    const newFooterLinks = [...settings.customFooterLinks];
-    newFooterLinks[index] = { ...newFooterLinks[index], external: !newFooterLinks[index].external };
+  const toggleExternalLink = (section, index) => {
+    const newFooterLinks = { ...settings.customFooterLinks };
+    newFooterLinks[section][index] = { ...newFooterLinks[section][index], external: !newFooterLinks[section][index].external };
     setSettings({
       ...settings,
       customFooterLinks: newFooterLinks
@@ -159,25 +165,29 @@ const AdminSettings = ({ authToken, setMessage }) => {
       <div className="admin-section">
         <div className="admin-header">
           <h3>Custom Footer Links</h3>
-          <button className="btn secondary" onClick={addFooterLink}>
-            Add Link
-          </button>
         </div>
         <p>Add custom links to appear in the footer. These can be internal pages or external websites.</p>
         
-        {settings.customFooterLinks.length === 0 ? (
+        <div className="admin-header">
+          <h4>Quick Links</h4>
+          <button className="btn secondary" onClick={() => addFooterLink('quickLinks')}>
+            Add Quick Link
+          </button>
+        </div>
+        
+        {settings.customFooterLinks.quickLinks.length === 0 ? (
           <div className="empty-state">
-            <p>No footer links added yet. Click &quot;Add Link&quot; to create your first footer link.</p>
+            <p>No quick links added yet.</p>
           </div>
         ) : (
           <div className="form-grid">
-            {settings.customFooterLinks.map((link, index) => (
-              <div key={index} className="form-group">
+            {settings.customFooterLinks.quickLinks.map((link, index) => (
+              <div key={`quick-${index}`} className="form-group">
                 <div className="admin-header">
-                  <h4>Footer Link {index + 1}</h4>
+                  <h4>Quick Link {index + 1}</h4>
                   <button 
                     className="btn danger small" 
-                    onClick={() => removeFooterLink(index)}
+                    onClick={() => removeFooterLink('quickLinks', index)}
                   >
                     Remove
                   </button>
@@ -186,14 +196,14 @@ const AdminSettings = ({ authToken, setMessage }) => {
                 <input
                   type="text"
                   value={link.path}
-                  onChange={(e) => updateFooterLink(index, 'path', e.target.value)}
+                  onChange={(e) => updateFooterLink('quickLinks', index, 'path', e.target.value)}
                   placeholder="/page or https://example.com"
                 />
                 <label>Label</label>
                 <input
                   type="text"
                   value={link.label}
-                  onChange={(e) => updateFooterLink(index, 'label', e.target.value)}
+                  onChange={(e) => updateFooterLink('quickLinks', index, 'label', e.target.value)}
                   placeholder="Link text"
                 />
                 <div className="form-group">
@@ -201,7 +211,60 @@ const AdminSettings = ({ authToken, setMessage }) => {
                     <input
                       type="checkbox"
                       checked={link.external || false}
-                      onChange={() => toggleExternalLink(index)}
+                      onChange={() => toggleExternalLink('quickLinks', index)}
+                    />
+                    Open in new tab (external link)
+                  </label>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        
+        <div className="admin-header">
+          <h4>Support Links</h4>
+          <button className="btn secondary" onClick={() => addFooterLink('supportLinks')}>
+            Add Support Link
+          </button>
+        </div>
+        
+        {settings.customFooterLinks.supportLinks.length === 0 ? (
+          <div className="empty-state">
+            <p>No support links added yet.</p>
+          </div>
+        ) : (
+          <div className="form-grid">
+            {settings.customFooterLinks.supportLinks.map((link, index) => (
+              <div key={`support-${index}`} className="form-group">
+                <div className="admin-header">
+                  <h4>Support Link {index + 1}</h4>
+                  <button 
+                    className="btn danger small" 
+                    onClick={() => removeFooterLink('supportLinks', index)}
+                  >
+                    Remove
+                  </button>
+                </div>
+                <label>Path/URL</label>
+                <input
+                  type="text"
+                  value={link.path}
+                  onChange={(e) => updateFooterLink('supportLinks', index, 'path', e.target.value)}
+                  placeholder="/page or https://example.com"
+                />
+                <label>Label</label>
+                <input
+                  type="text"
+                  value={link.label}
+                  onChange={(e) => updateFooterLink('supportLinks', index, 'label', e.target.value)}
+                  placeholder="Link text"
+                />
+                <div className="form-group">
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={link.external || false}
+                      onChange={() => toggleExternalLink('supportLinks', index)}
                     />
                     Open in new tab (external link)
                   </label>

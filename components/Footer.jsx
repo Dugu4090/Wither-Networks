@@ -17,8 +17,19 @@ const Footer = () => {
       try {
         const data = await getContent();
         if (data) {
+          // Combine quickLinks and supportLinks into a single array
+          let customLinks = [];
+          if (data.footerLinks) {
+            if (data.footerLinks.quickLinks) {
+              customLinks = customLinks.concat(data.footerLinks.quickLinks);
+            }
+            if (data.footerLinks.supportLinks) {
+              customLinks = customLinks.concat(data.footerLinks.supportLinks);
+            }
+          }
+          
           setFooterData({
-            customLinks: data.footerLinks || [],
+            customLinks: customLinks,
             discordLink: data.discordLink || '#',
             copyrightText: data.copyrightText || '© 2025 Wither Networks | play.withernetworks.fun'
           });
