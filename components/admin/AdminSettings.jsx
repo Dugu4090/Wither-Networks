@@ -8,14 +8,7 @@ const AdminSettings = ({ authToken, setMessage }) => {
     siteTitle: 'Wither Networks - Premium Minecraft Server',
     serverIP: 'play.withernetworks.fun',
     contactEmail: 'support@withernetworks.fun',
-    navigation: [
-      { path: '/', icon: 'fa-home', label: 'Home' },
-      { path: '/about', icon: 'fa-info-circle', label: 'About' },
-      { path: '/game-modes', icon: 'fa-gamepad', label: 'Games' },
-      { path: '/rules', icon: 'fa-gavel', label: 'Rules' },
-      { path: '/ranks', icon: 'fa-crown', label: 'Ranks' },
-      { path: '/contact', icon: 'fa-envelope', label: 'Contact' }
-    ],
+    discordLink: '',
     footerLinks: {
       quickLinks: [
         { path: '/', label: 'Home' },
@@ -46,7 +39,7 @@ const AdminSettings = ({ authToken, setMessage }) => {
         siteTitle: 'Wither Networks - Premium Minecraft Server',
         serverIP: 'play.withernetworks.fun',
         contactEmail: 'support@withernetworks.fun',
-        navigation: data.navigation || settings.navigation,
+        discordLink: data.discordLink || '',
         footerLinks: data.footerLinks || settings.footerLinks
       });
       setLoading(false);
@@ -67,7 +60,7 @@ const AdminSettings = ({ authToken, setMessage }) => {
         ...currentContent,
         heroTitle: settings.heroTitle,
         heroSubtitle: settings.heroSubtitle,
-        navigation: settings.navigation,
+        discordLink: settings.discordLink,
         footerLinks: settings.footerLinks
       };
       await updateContent(updatedContent, authToken);
@@ -90,14 +83,7 @@ const AdminSettings = ({ authToken, setMessage }) => {
     });
   };
 
-  const updateNavigationItem = (index, field, value) => {
-    const newNavigation = [...settings.navigation];
-    newNavigation[index] = { ...newNavigation[index], [field]: value };
-    setSettings({
-      ...settings,
-      navigation: newNavigation
-    });
-  };
+  
 
   const updateFooterLink = (section, index, field, value) => {
     const newFooterLinks = { ...settings.footerLinks };
@@ -108,22 +94,9 @@ const AdminSettings = ({ authToken, setMessage }) => {
     });
   };
 
-  const addNavigationItem = () => {
-    const newNavigation = [...settings.navigation, { path: '', icon: '', label: '' }];
-    setSettings({
-      ...settings,
-      navigation: newNavigation
-    });
-  };
+  
 
-  const removeNavigationItem = (index) => {
-    const newNavigation = [...settings.navigation];
-    newNavigation.splice(index, 1);
-    setSettings({
-      ...settings,
-      navigation: newNavigation
-    });
-  };
+  
 
   const addFooterLink = (section) => {
     const newFooterLinks = { ...settings.footerLinks };
@@ -178,47 +151,16 @@ const AdminSettings = ({ authToken, setMessage }) => {
       </div>
 
       <div className="admin-section">
-        <div className="admin-header">
-          <h3>Navigation Links</h3>
-          <button className="btn secondary" onClick={addNavigationItem}>
-            Add Navigation Item
-          </button>
-        </div>
-        <div className="form-grid">
-          {settings.navigation.map((item, index) => (
-            <div key={index} className="form-group">
-              <div className="admin-header">
-                <h4>Navigation Item {index + 1}</h4>
-                {settings.navigation.length > 1 && (
-                  <button 
-                    className="btn danger small" 
-                    onClick={() => removeNavigationItem(index)}
-                  >
-                    Remove
-                  </button>
-                )}
-              </div>
-              <label>Path</label>
-              <input
-                type="text"
-                value={item.path}
-                onChange={(e) => updateNavigationItem(index, 'path', e.target.value)}
-              />
-              <label>Icon Class</label>
-              <input
-                type="text"
-                value={item.icon}
-                onChange={(e) => updateNavigationItem(index, 'icon', e.target.value)}
-                placeholder="e.g., fa-home"
-              />
-              <label>Label</label>
-              <input
-                type="text"
-                value={item.label}
-                onChange={(e) => updateNavigationItem(index, 'label', e.target.value)}
-              />
-            </div>
-          ))}
+        <h3>Discord Link</h3>
+        <div className="form-group">
+          <label>Discord Server Link</label>
+          <input
+            type="text"
+            value={settings.discordLink}
+            onChange={(e) => updateSetting('discordLink', e.target.value)}
+            placeholder="https://discord.gg/your-server"
+          />
+          <small>Enter the full URL to your Discord server invite link</small>
         </div>
       </div>
 
